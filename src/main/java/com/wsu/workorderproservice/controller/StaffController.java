@@ -51,7 +51,7 @@ public class StaffController {
     @PostMapping //will be used to add new applications to the system
     public ResponseEntity<ServiceResponseDTO> save(@RequestBody @Valid StaffDTO staffDTO){
         if(!StringUtils.hasLength(staffDTO.getStaffCode())){
-            throw new InvalidRequestException("Staff code must be provided")
+            throw new InvalidRequestException("Staff code must be provided");
         }
         return new ResponseEntity<>(ServiceResponseDTO.builder().meta(Map.of(MESSAGE, "Successfully added staff"))
         .data(staffService.save(staffDTO)).build(), HttpStatus.CREATED);
